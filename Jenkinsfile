@@ -9,11 +9,17 @@ pipeline {
 
                 // Run Maven on a Unix agent.
                 sh "./mvnw clean compile"
-
-                // To run Maven on a Windows agent, use
-                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
-
+        }
+        stage('Test') {
+            post {
+                always {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                }
+            }
+            steps {
+                sh "mvn test"
+            }
         }
     }
 }
