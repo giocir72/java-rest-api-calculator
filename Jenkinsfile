@@ -8,7 +8,7 @@ pipeline {
                 git 'https://github.com/giocir72/java-rest-api-calculator.git'
 
                 // Run Maven on a Unix agent.
-                sh "./mvnw clean compile"
+                sh './mvnw clean compile'
             }
         }
         stage('Test') {
@@ -18,7 +18,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'mvn test'
+                sh './mvnw test'
             }
         }
     }
