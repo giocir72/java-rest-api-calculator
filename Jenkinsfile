@@ -21,6 +21,7 @@ pipeline {
                 sh './mvnw test'
             }
         }
+        
         stage('Publish') {
             post {
                 success {
