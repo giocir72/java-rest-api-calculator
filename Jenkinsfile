@@ -21,5 +21,15 @@ pipeline {
                 sh './mvnw test'
             }
         }
+        stage('Publish') {
+            post {
+                success {
+                    archiveArtifacts 'target/*.jar'
+                }
+            }
+            steps {
+                sh './mvnw package'
+            }
+        }
     }
 }
